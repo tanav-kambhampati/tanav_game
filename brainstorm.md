@@ -1,7 +1,6 @@
 # **Idea:**
-My overall goal is to build a simple top-down exploration game using HTML, CSS, and JavaScript.You basiaclly have to move around different areas, meet NPCs, pick up items, and explore a small open world.
-The focus is on exploring a world that feels connected and interesting, not on combat or complex mechanics.
-
+My overall goal is to build a simple top-down exploration game using HTML, CSS, and JavaScript.You basiaclly have to move around different areas, meet NPCs, pick up items, and explore a small open world. The focus is on exploring a world that feels connected and interesting, with a slight emphasis on combat or complex mechanics.
+ddd
 
 # **What I'm Planning on  Including:**
 - A main character (player)
@@ -12,7 +11,7 @@ The focus is on exploring a world that feels connected and interesting, not on c
 - NPCs to interact with
 - Treasures to interact with across the map
 - Each NPC takes you to their "world"
-
+dfgsdg
 
 # **Map:**
 I'm still thinking about how to make the map work. I can either just have a background image or I can make a 2D array. The second is probably better. 
