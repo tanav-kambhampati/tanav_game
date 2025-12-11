@@ -11,8 +11,8 @@ ddd
 - NPCs to interact with
 - Treasures to interact with across the map
 - Each NPC takes you to their "world"
-dfgsdg
-
+dfgsdgddddddddvcje;alnvle;n;lknv;elnakddddd
+cekjawnc;aekcnalew;
 # **Map:**
 I'm still thinking about how to make the map work. I can either just have a background image or I can make a 2D array. The second is probably better. 
 
