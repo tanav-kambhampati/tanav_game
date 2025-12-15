@@ -1,6 +1,5 @@
 import { CommanderDialogue, MissionObjective } from './CommanderDialogue.js';
 
-// ==================== NPC DATA FACTORY CLASS ====================
 class NPCFactory {
   constructor(gameEnv, path, width, height) {
     this.gameEnv = gameEnv;
@@ -37,7 +36,6 @@ class NPCFactory {
           spriteSrc
         );
         
-        // TODO: After dialogue, transition to propulsion level
         setTimeout(() => {
           const game = gameEnv.game;
           if (!game.getNpcCookie('Propulsion-NPC')) {
@@ -78,7 +76,6 @@ class NPCFactory {
           spriteSrc
         );
         
-        // TODO: After dialogue, transition to orbital level
         setTimeout(() => {
           const game = gameEnv.game;
           if (!game.getNpcCookie('Orbital-NPC')) {
@@ -119,7 +116,6 @@ class NPCFactory {
           spriteSrc
         );
         
-        // TODO: After dialogue, transition to history level
         setTimeout(() => {
           const game = gameEnv.game;
           if (!game.getNpcCookie('History-NPC')) {
@@ -160,7 +156,6 @@ class NPCFactory {
           spriteSrc
         );
         
-        // TODO: After dialogue, transition to SpaceX level
         setTimeout(() => {
           const game = gameEnv.game;
           if (!game.getNpcCookie('SpaceX-NPC')) {
@@ -198,13 +193,11 @@ class NPCFactory {
         const game = gameEnv.game;
         const inventory = game.inventoryManager.inventory;
         
-        // Check if player has all 4 components
         const requiredParts = ['rocket_fuel', 'engine_component', 'heat_shield', 'navigation_chip'];
         const collectedParts = requiredParts.filter(partId => 
           inventory.items.some(item => item.id === partId)
         );
         
-        // Check if player has completed all 4 expert trainings
         const requiredNpcs = ['Propulsion-NPC', 'Orbital-NPC', 'History-NPC', 'SpaceX-NPC'];
         const completedNpcs = requiredNpcs.filter(npcId => game.getNpcCookie(npcId));
         
@@ -229,7 +222,6 @@ class NPCFactory {
           return;
         }
         
-        // Player is ready - show dialogue and transition to boss level
         this.dialogueSystem.showDialogue(
           "Impressive... You've collected all the components and completed all the training. " +
           "Very well, settler. Follow me to the SpaceX Arena for the ultimate showdown!",
@@ -237,7 +229,6 @@ class NPCFactory {
           spriteSrc
         );
         
-        // TODO: Transition to boss fight level
         setTimeout(() => {
           CommanderDialogue.showMessage("Good luck, settler! Nova Settlement is counting on you!");
         }, 3000);

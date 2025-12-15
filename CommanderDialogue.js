@@ -184,7 +184,6 @@ class CommanderDialogue {
             <span style="animation: textGlow 2s infinite;">📡 ${dialogue.speaker}</span>
             <span style="font-size: 8px; color: #666;">[ EARPIECE TRANSMISSION ]</span>
           </div>
-          
           <div style="
             color: #FFFFFF;
             font-size: 11px;
