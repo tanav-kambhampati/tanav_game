@@ -373,7 +373,7 @@ class MissionObjective {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 100%);
+      background: linear-gradient(135deg, #0a0a1a 0%, #13132eff 100%);
       border: 4px solid #FFD700;
       border-radius: 15px;
       padding: 30px;
