@@ -1,0 +1,90 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocket Science Adventure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #1a1a2e;
+            min-height: 100vh;
+            font-family: 'Press Start 2P', cursive;
+        }
+        
+        #gameContainer {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        #gameCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #error-display {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(255, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            font-size: 10px;
+            max-width: 400px;
+            display: none;
+            z-index: 99999;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas"></canvas>
+    </div>
+    <div id="error-display"></div>
+    
+    <script type="module">
+        // Error handler to show issues on screen
+        const errorDisplay = document.getElementById('error-display');
+        window.onerror = function(msg, url, line, col, error) {
+            errorDisplay.style.display = 'block';
+            errorDisplay.innerHTML += `<p>Error: ${msg} at ${url}:${line}</p>`;
+            return false;
+        };
+
+        try {
+            const { default: Game } = await import('./Game.js');
+            const { default: GameLevelRocket } = await import('./GameLevelRocket.js');
+
+            console.log('Modules loaded successfully');
+
+            // Setup game environment - PURE FRONTEND (no backend required)
+            const environment = {
+                path: '.',  // Path to assets
+                gameContainer: document.getElementById('gameContainer'),
+                gameCanvas: document.getElementById('gameCanvas'),
+                gameLevelClasses: [
+                    GameLevelRocket  // Rocket Science Adventure Level
+                ]
+            };
+
+            console.log('Starting game...');
+            // Start the game
+            const game = new Game(environment);
+            console.log('Game started!');
+
+        } catch (error) {
+            console.error('Failed to start game:', error);
+            errorDisplay.style.display = 'block';
+            errorDisplay.innerHTML = `<p>Failed to load: ${error.message}</p><p>Check console (F12) for details</p>`;
+        }
+    </script>
+</body>
+</html>
