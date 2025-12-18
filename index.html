@@ -51,7 +51,6 @@
     <div id="error-display"></div>
     
     <script type="module">
-        // Error handler to show issues on screen
         const errorDisplay = document.getElementById('error-display');
         window.onerror = function(msg, url, line, col, error) {
             errorDisplay.style.display = 'block';
@@ -65,18 +64,16 @@
 
             console.log('Modules loaded successfully');
 
-            // Setup game environment - PURE FRONTEND (no backend required)
             const environment = {
-                path: '.',  // Path to assets
+                path: '.',  
                 gameContainer: document.getElementById('gameContainer'),
                 gameCanvas: document.getElementById('gameCanvas'),
                 gameLevelClasses: [
-                    GameLevelRocket  // Rocket Science Adventure Level
+                    GameLevelRocket  
                 ]
             };
 
             console.log('Starting game...');
-            // Start the game
             const game = new Game(environment);
             console.log('Game started!');
 
