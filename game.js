@@ -2312,6 +2312,53 @@ class Game {
     static main(environment) {
         return new Game(environment);
     }
+// level transition
+    /**
+     * @param {Class} LevelClass 
+     * @param {Function} onComplete 
+     */
+    async goToLevel(LevelClass, onComplete = null) {
+        this.levelCompleteCallback = onComplete;
+        
+        if (!this.originalLevelClasses) {
+            this.originalLevelClasses = [...this.gameControl.levelClasses];
+            this.originalLevelIndex = this.gameControl.currentLevelIndex;
+        }
+        
+        if (this.gameControl.currentLevel) {
+            this.gameControl.currentLevel.continue = false;
+            this.gameControl.currentLevel.destroy();
+        }
+        
+        this.gameControl.levelClasses = [LevelClass];
+        this.gameControl.currentLevelIndex = 0;
+        
+        this.gameControl.gameOver = () => {
+            this.returnToMainLevel();
+        };
+        
+        this.gameControl.transitionToLevel();
+    }
+    
+
+    returnToMainLevel() {
+        if (this.originalLevelClasses) {
+            this.gameControl.levelClasses = this.originalLevelClasses;
+            this.gameControl.currentLevelIndex = this.originalLevelIndex;
+            this.gameControl.gameOver = null;
+            
+            this.originalLevelClasses = null;
+            this.originalLevelIndex = null;
+            
+            if (this.levelCompleteCallback) {
+                this.levelCompleteCallback();
+                this.levelCompleteCallback = null;
+            }
+            
+            // Return to main level
+            this.gameControl.transitionToLevel();
+        }
+    }
 
     initUser() {
         console.log('Initialized local user:', this.uid);
