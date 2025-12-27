@@ -1,10 +1,10 @@
 import GameLevel from "./GameLevel.js";
 
 class GameControl {
-  
-    @param {*} path 
-    @param {*} levelClasses 
-    
+    /**
+     * @param {*} game 
+     * @param {*} levelClasses 
+     */
     constructor(game, levelClasses) {
         this.game = game; 
         this.path = game.path;
@@ -28,16 +28,18 @@ class GameControl {
         this.transitionToLevel();
     }
 
-    @param {Object} handler
-     
+    /**
+     * @param {Object} handler
+     */
     registerInteractionHandler(handler) {
         if (handler) {
             this.globalInteractionHandlers.add(handler);
         }
     }
 
-    @param {Object} handler
-
+    /**
+     * @param {Object} handler
+     */
     unregisterInteractionHandler(handler) {
         if (handler) {
             this.globalInteractionHandlers.delete(handler);
@@ -103,8 +105,9 @@ class GameControl {
         }
     }
 
-    
-    @param {*} event 
+    /**
+     * @param {*} event 
+     */
     handleNextLevelKey(event) {
         if (event.key.toLowerCase() === 't' || event.key.toLowerCase() === 'Escape') {
             if (this.currentLevelIndex < this.levelClasses.length - 1) {
