@@ -1,4 +1,3 @@
-// All of the script and some of the CSS was done with AI
 class CommanderDialogue {
   constructor(path) {
     this.path = path;
@@ -328,7 +327,6 @@ class CommanderDialogue {
   }
 }
 
-// ==================== MISSION OBJECTIVE CLASS ====================
 class MissionObjective {
   static showInitialObjective() {
     this.show('Talk to the 4 experts to begin their training missions');
@@ -411,4 +409,3 @@ class MissionObjective {
 }
 
 export { CommanderDialogue, MissionObjective };
-
