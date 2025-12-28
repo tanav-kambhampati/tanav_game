@@ -1,15 +1,4 @@
-@class GameObject
-@method draw 
-@method update 
-@method resize
-@method destroy 
-@method collisionChecks 
-@method isCollision 
-@method handleCollisionEvent 
-@method handleReaction 
-
 class GameObject {
-    
     constructor(gameEnv = null) {
         if (new.target === GameObject) {
             throw new TypeError("Cannot construct GameObject instances directly");
@@ -25,23 +14,18 @@ class GameObject {
         };
     }
 
-    @abstract
     update() {
         throw new Error("Method 'update()' must be implemented.");
     }
 
-    @abstract
     draw() {
         throw new Error("Method 'draw()' must be implemented.");
     }
 
-    @abstract
     resize() {
         throw new Error("Method 'resize()' must be implemented.");
     }
 
-    
-    @abstract
     destroy() {
         throw new Error("Method 'destroy()' must be implemented.");
     }
@@ -65,19 +49,15 @@ class GameObject {
     }
 
     isCollision(other) {
-        // Bounding rectangles from Canvas
         const thisRect = this.canvas.getBoundingClientRect();
         const otherRect = other.canvas.getBoundingClientRect();
 
-        // Calculate hitbox constants for this object
         const thisWidthReduction = thisRect.width * (this.hitbox?.widthPercentage || 0.0);
         const thisHeightReduction = thisRect.height * (this.hitbox?.heightPercentage || 0.0);
 
-        // Calculate hitbox constants for other object
         const otherWidthReduction = otherRect.width * (other.hitbox?.widthPercentage || 0.0);
         const otherHeightReduction = otherRect.height * (other.hitbox?.heightPercentage || 0.0);
 
-        // Build hitbox by subtracting reductions from the left, right, and top
         const thisLeft = thisRect.left + thisWidthReduction;
         const thisTop = thisRect.top + thisHeightReduction;
         const thisRight = thisRect.right - thisWidthReduction;
@@ -88,7 +68,6 @@ class GameObject {
         const otherRight = otherRect.right - otherWidthReduction;
         const otherBottom = otherRect.bottom;
 
-        // Determine hit and touch points of hit
         const hit = (
             thisLeft < otherRight &&
             thisRight > otherLeft &&
@@ -119,23 +98,15 @@ class GameObject {
         this.collisionData = { hit, touchPoints };
     }
 
-    /**
-     * Update the collisions array when player is touching the object
-     * @param {*} objectID 
-     */
     handleCollisionEvent() {
         const objectOther = this.collisionData.touchPoints.other;
-        // check if the collision type is not already in the collisions array
         if (!this.state.collisionEvents.includes(objectOther.id)) {
-            // add the collisionType to the collisions array, making it the current collision
             this.state.collisionEvents.push(objectOther.id);
             this.handleCollisionReaction(objectOther);
         }
         this.handleCollisionState();
     }
 
-
-    @param {*} other 
     handleCollisionReaction(other) {
         if (other && other.reaction && typeof other.reaction === "function") {
             other.reaction();
@@ -194,5 +165,4 @@ class GameObject {
     }
 }
 
-
-jklj;kdfsaasdfasdfdasdfadfsfsfdafdfdgsdfggfdsgdffdsafds
+export default GameObject;

@@ -1,7 +1,6 @@
 import GameEnvBackground from './GameEngine/GameEnvBackground.js';
 import Npc from './GameEngine/Npc.js';
 import Player from './GameEngine/Player.js';
-import FloorItem from './FloorItem.js';
 import { CommanderDialogue } from './CommanderDialogue.js';
 import NPCFactory from './NPCFactory.js';
 
@@ -17,17 +16,7 @@ class GameLevelRocket {
 
     this.commanderDialogue.showIntro();
 
-    this.spawnCollectibles();
-
     this.classes = this.buildLevel();
-  }
-
-  spawnCollectibles() {
-    setTimeout(() => {
-      FloorItem.createRandomItem(this.width * 0.3, this.height * 0.4);
-      FloorItem.createRandomItem(this.width * 0.5, this.height * 0.6);
-      FloorItem.createRandomItem(this.width * 0.7, this.height * 0.3);
-    }, 1000);
   }
 
   createBackgroundData() {

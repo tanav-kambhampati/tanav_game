@@ -1,14 +1,3 @@
-/**
-
- * @class GameEnv
- * @property {Object} container
- * @property {Object} canvas 
- * @property {Object} ctx 
- * @property {number} innerWidth 
- * @property {number} innerHeight 
- * @property {number} top
- * @property {number} bottom 
- */
 class GameEnv {
     constructor() {
         this.container = null;
@@ -18,13 +7,11 @@ class GameEnv {
         this.innerHeight = 0;
         this.top = 0;
         this.bottom = 0;
-
         this.game = null; 
         this.path = ''; 
         this.gameControl = null; 
         this.gameObjects = [];    
     }
-
      
     create() {
         this.setCanvas();
@@ -34,7 +21,6 @@ class GameEnv {
         this.innerHeight = window.innerHeight - this.top - this.bottom;
         this.size();
     }
-
 
     setCanvas() {
         this.canvas = document.getElementById('gameCanvas');
@@ -61,11 +47,9 @@ class GameEnv {
         this.canvas.style.top = `${this.top}px`;
     }
 
-
     resize() {
         this.create();
     }
-
  
     clear() {
         this.ctx.clearRect(0, 0, this.innerWidth, this.innerHeight);

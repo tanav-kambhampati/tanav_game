@@ -518,7 +518,7 @@ class Inventory {
         closeBtn.addEventListener("click", () => this.close());
 
         document.addEventListener("keydown", (e) => {
-            if (e.key === ".") {
+            if (e.key === "i" || e.key === "I" || e.key === ".") {
                 this.toggle();
             }
         });
@@ -1146,62 +1146,12 @@ class Inventory {
 
     addStartingItems() {
         this.addItem({
-            id: 'roi_calculator',
-            name: 'ROI Calculator',
-            description: 'Calculate Return on Investment for your trades.',
-            emoji: '📊',
+            id: 'commander_earpiece',
+            name: 'Commander Earpiece',
+            description: 'A communication device linked to Commander Nova. She guides you on your mission to save Nova Settlement.',
+            emoji: '📡',
             stackable: false,
-            value: 300,
-            isCalculator: true
-        });
-
-        this.addItem({
-            id: 'stock_certificate',
-            name: 'Stock Certificate',
-            description: 'A valuable stock certificate that can be traded for profit.',
-            emoji: '📈',
-            stackable: true,
-            value: 1000,
-            quantity: 5
-        });
-
-        this.addItem({
-            id: 'bond',
-            name: 'Government Bond',
-            description: 'A safe investment that provides steady returns.',
-            emoji: '💵',
-            stackable: true,
-            value: 500,
-            quantity: 3
-        });
-
-        this.addItem({
-            id: 'trading_boost',
-            name: 'Trading Boost',
-            description: 'Increases trading profits by 50% for 30 seconds.',
-            emoji: '⚡',
-            stackable: true,
-            value: 200,
-            quantity: 2
-        });
-
-        this.addItem({
-            id: 'speed_boost',
-            name: 'Speed Boost',
-            description: 'Increases movement speed by 25% for 20 seconds.',
-            emoji: '🚀',
-            stackable: true,
-            value: 150,
-            quantity: 2
-        });
-
-        this.addItem({
-            id: 'trading_manual',
-            name: 'Trading Manual',
-            description: 'A comprehensive guide to advanced trading strategies.',
-            emoji: '📚',
-            stackable: false,
-            value: 3000,
+            value: 0,
             quantity: 1
         });
     }

@@ -1044,9 +1044,6 @@ class StatsManager {
         return null;
     }
 
-    /**
-     * @returns {Object}
-     */
     getAllNpcCookies() {
         const cookies = document.cookie.split(';');
         const npcCookies = {};
@@ -1063,11 +1060,21 @@ class StatsManager {
         return npcCookies;
     }
 
-    /**
-     * @param {string} npcId 
-     * @param {string} reward 
-     * @param {string} objective 
-     */
+    clearAllNpcCookies() {
+        const npcIds = ['Propulsion-NPC', 'Orbital-NPC', 'History-NPC', 'SpaceX-NPC', 'Elon-Musk'];
+        npcIds.forEach(id => {
+            document.cookie = `npc_${id}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        });
+        localStorage.removeItem('npcCookies');
+        localStorage.removeItem('npcProgress');
+        if (this.statsManager) {
+            this.statsManager.npcCookies = {};
+        }
+        console.log('All NPC progress cleared! Refresh the page to see changes.');
+        this.updateProgressUI();
+        return 'Progress cleared!';
+    }
+
     showNpcCookieNotification(npcId, reward, objective) {
         this.createCookieParticles();
         
@@ -2841,5 +2848,16 @@ class Game {
         }, 1000);
     }
 }
+
+window.resetGameProgress = function() {
+    const npcIds = ['Propulsion-NPC', 'Orbital-NPC', 'History-NPC', 'SpaceX-NPC', 'Elon-Musk'];
+    npcIds.forEach(id => {
+        document.cookie = `npc_${id}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    });
+    localStorage.removeItem('npcCookies');
+    localStorage.removeItem('npcProgress');
+    console.log('✅ All NPC progress cleared! Refreshing page...');
+    setTimeout(() => location.reload(), 500);
+};
 
 export default Game;

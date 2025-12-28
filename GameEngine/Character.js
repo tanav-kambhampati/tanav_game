@@ -1,6 +1,5 @@
 import GameObject from './GameObject.js';
 
-
 class Character extends GameObject {
     constructor(data = null, gameEnv = null) {
         super(gameEnv);
@@ -55,18 +54,8 @@ class Character extends GameObject {
     }
     
     update() {
-        if (this.velocity.x < 0 && this.state.movement.left) {
-            this.position.x += this.velocity.x;
-        }
-        if (this.velocity.x > 0 && this.state.movement.right) {
-            this.position.x += this.velocity.x;
-        }
-        if (this.velocity.y < 0 && this.state.movement.up) {
-            this.position.y += this.velocity.y;
-        }
-        if (this.velocity.y > 0 && this.state.movement.down) {
-            this.position.y += this.velocity.y;
-        }
+        this.position.x += this.velocity.x;
+        this.position.y += this.velocity.y;
         
         this.position.x = Math.max(0, Math.min(this.position.x, this.gameEnv.innerWidth - this.canvas.width));
         this.position.y = Math.max(0, Math.min(this.position.y, this.gameEnv.innerHeight - this.canvas.height));
@@ -75,8 +64,6 @@ class Character extends GameObject {
         this.canvas.style.top = this.position.y + 'px';
         
         this.draw();
-        
-        this.collisionChecks();
     }
     
     draw() {
@@ -138,14 +125,9 @@ class Character extends GameObject {
         }
     }
     
-    /**
-     * @param {*} other 
-     */
     handleCollisionReaction(other) {
         super.handleCollisionReaction(other);
     }
 }
 
 export default Character;
-
-

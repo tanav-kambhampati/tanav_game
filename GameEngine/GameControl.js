@@ -1,10 +1,6 @@
 import GameLevel from "./GameLevel.js";
 
 class GameControl {
-    /**
-     * @param {*} game 
-     * @param {*} levelClasses 
-     */
     constructor(game, levelClasses) {
         this.game = game; 
         this.path = game.path;
@@ -18,28 +14,20 @@ class GameControl {
         this.nextLevelKeyListener = this.handleNextLevelKey.bind(this);
         this.gameOver = null; 
         this.savedCanvasState = [];
-        
         this.globalInteractionHandlers = new Set();
     }
-
     
     start() {
         this.addExitKeyListener();
         this.transitionToLevel();
     }
 
-    /**
-     * @param {Object} handler
-     */
     registerInteractionHandler(handler) {
         if (handler) {
             this.globalInteractionHandlers.add(handler);
         }
     }
 
-    /**
-     * @param {Object} handler
-     */
     unregisterInteractionHandler(handler) {
         if (handler) {
             this.globalInteractionHandlers.delete(handler);
@@ -55,10 +43,8 @@ class GameControl {
         this.globalInteractionHandlers.clear();
     }
 
-
     transitionToLevel() {
         this.cleanupInteractionHandlers();
-
         const GameLevelClass = this.levelClasses[this.currentLevelIndex];
         this.currentLevel = new GameLevel(this);
         this.currentLevel.create(GameLevelClass);
@@ -85,7 +71,6 @@ class GameControl {
         this.gameLoopCounter++;
     }
 
-
     handleLevelEnd() {
         if (this.currentLevelIndex < this.levelClasses.length - 1) {
             alert("Level ended.");
@@ -94,7 +79,6 @@ class GameControl {
         }
         
         this.cleanupInteractionHandlers();
-        
         this.currentLevel.destroy();
         
         if (this.gameOver) {
@@ -105,16 +89,13 @@ class GameControl {
         }
     }
 
-    /**
-     * @param {*} event 
-     */
     handleNextLevelKey(event) {
         if (event.key.toLowerCase() === 't' || event.key.toLowerCase() === 'Escape') {
             if (this.currentLevelIndex < this.levelClasses.length - 1) {
                 console.log("Hotkey 't' pressed: Transitioning to next level.");
                 this.currentLevel.continue = false;
             } else {
-                alert("🎉 You're on the final level! There are no more levels to transition to.");
+                alert("You're on the final level! There are no more levels to transition to.");
             }
         }
     }
@@ -164,9 +145,8 @@ class GameControl {
         this.removeExitKeyListener();
         this.saveCanvasState();
         this.hideCanvasState();
-        
         this.cleanupInteractionHandlers();
-     }
+    }
 
     resume() {
         this.isPaused = false;

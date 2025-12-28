@@ -1,5 +1,4 @@
 export const defaultItems = {
-    // Rocket Component Collectibles (needed for boss fight)
     rocket_fuel: {
         id: "rocket_fuel",
         name: "Rocket Fuel Cell",
@@ -46,7 +45,6 @@ export const defaultItems = {
         isRocketPart: true
     },
     
-    // Educational Power-ups
     knowledge_boost: {
         id: "knowledge_boost",
         name: "Knowledge Boost",
@@ -64,7 +62,6 @@ export const defaultItems = {
         value: 150
     },
     
-    // Collectibles
     moon_rock: {
         id: "moon_rock",
         name: "Moon Rock Sample",
@@ -82,7 +79,6 @@ export const defaultItems = {
         value: 3000
     },
     
-    // Tools
     telescope: {
         id: "telescope",
         name: "Space Telescope",
@@ -109,7 +105,6 @@ export const defaultItems = {
         isCalculator: true
     },
     
-    // Special Boss Fight Items
     elon_key: {
         id: "elon_key",
         name: "SpaceX Access Key",
